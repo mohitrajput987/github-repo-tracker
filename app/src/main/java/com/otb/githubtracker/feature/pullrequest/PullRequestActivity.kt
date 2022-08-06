@@ -1,4 +1,4 @@
-package com.otb.githubtracker.scene.pullrequest
+package com.otb.githubtracker.feature.pullrequest
 
 import android.view.LayoutInflater
 import androidx.activity.viewModels
@@ -12,8 +12,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class PullRequestActivity : BaseActivity<ActivityPullRequestBinding>() {
     companion object {
-        private const val DEFAULT_ORG_NAME = "mohitrajput987"
-        private const val DEFAULT_REPO_NAME = "github-repo-tracker"
+        private const val DEFAULT_ORG_NAME = "square"
+        private const val DEFAULT_REPO_NAME = "retrofit"
     }
 
     override fun inflateLayout(layoutInflater: LayoutInflater) =

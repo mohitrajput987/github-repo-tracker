@@ -6,13 +6,16 @@
 
         <variable
             name="pullRequest"
-            type="com.otb.githubtracker.scene.pullrequest.PullRequestModels.PullRequestEntity" />
+            type="com.otb.githubtracker.feature.pullrequest.PullRequestModels.PullRequestEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:paddingHorizontal="@dimen/list_horizontal_padding"
         android:paddingVertical="@dimen/list_vertical_padding">
 
@@ -26,6 +29,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -52,6 +56,7 @@
             android:text="@{pullRequest.user.userName}"
             android:textColor="@color/teal_700"
             android:textSize="14sp"
+            android:fontFamily="sans-serif"
             app:layout_constraintBottom_toBottomOf="@+id/iv_user_avatar"
             app:layout_constraintStart_toEndOf="@+id/iv_user_avatar"
             app:layout_constraintTop_toTopOf="@+id/iv_user_avatar"
@@ -67,6 +72,7 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_user_avatar"
             app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="sans-serif"
             app:layout_constraintStart_toEndOf="@+id/tv_user_name"
             app:layout_constraintTop_toTopOf="@+id/iv_user_avatar"
             tools:text="Created at 13 May 2022" />
@@ -78,8 +84,8 @@
             android:layout_marginTop="10dp"
             android:text="@{@string/closed_at_x(pullRequest.closedAt)}"
             android:textColor="@color/black"
+            android:fontFamily="sans-serif-smallcaps"
             android:textSize="14sp"
-            android:textStyle="italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_created_at"
             tools:text="Closed at 30 June 2022 2 pm " />

@@ -1,4 +1,4 @@
-package com.otb.githubtracker.scene.pullrequest
+package com.otb.githubtracker.feature.pullrequest
 
 import dagger.Binds
 import dagger.Module

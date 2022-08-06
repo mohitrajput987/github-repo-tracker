@@ -1,6 +1,6 @@
 package com.otb.githubtracker.network.service
 
-import com.otb.githubtracker.scene.pullrequest.PullRequestModels
+import com.otb.githubtracker.feature.pullrequest.PullRequestModels
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
