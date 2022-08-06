@@ -18,7 +18,7 @@
         android:theme="@style/Theme.GithubRepoTracker"
         tools:targetApi="31">
         <activity
-            android:name=".scene.pullrequest.MainActivity"
+            android:name=".scene.pullrequest.PullRequestActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
