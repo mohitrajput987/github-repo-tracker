@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pullRequest"
+            type="com.otb.githubtracker.scene.pullrequest.PullRequestModels.PullRequestEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/list_horizontal_padding"
+        android:paddingVertical="@dimen/list_vertical_padding">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{pullRequest.title}"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="This is the title of my very first PR of this repository. " />
+
+        <ImageView
+            android:id="@+id/iv_user_avatar"
+            android:layout_width="@dimen/list_user_image_side"
+            android:layout_height="@dimen/list_user_image_side"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/app_name"
+            app:imageUrl="@{pullRequest.user.imageUrl}"
+            app:isCircular="@{true}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:placeholder="@{@drawable/ic_user_default}"
+            tools:src="@drawable/ic_user_default" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@{pullRequest.user.userName}"
+            android:textColor="@color/teal_700"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_user_avatar"
+            app:layout_constraintStart_toEndOf="@+id/iv_user_avatar"
+            app:layout_constraintTop_toTopOf="@+id/iv_user_avatar"
+            tools:text="mohitrajput987" />
+
+        <TextView
+            android:id="@+id/tv_created_at"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@{@string/created_at_x(pullRequest.createdAt)}"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_user_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_user_name"
+            app:layout_constraintTop_toTopOf="@+id/iv_user_avatar"
+            tools:text="Created at 13 May 2022" />
+
+        <TextView
+            android:id="@+id/tv_closed_at"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{@string/closed_at_x(pullRequest.closedAt)}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_created_at"
+            tools:text="Closed at 30 June 2022 2 pm " />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

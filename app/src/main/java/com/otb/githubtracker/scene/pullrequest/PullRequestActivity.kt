@@ -3,6 +3,7 @@ package com.otb.githubtracker.scene.pullrequest
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.otb.githubtracker.common.BaseActivity
 import com.otb.githubtracker.databinding.ActivityPullRequestBinding
 import com.otb.githubtracker.network.ViewState
@@ -19,10 +20,19 @@ class PullRequestActivity : BaseActivity<ActivityPullRequestBinding>() {
         ActivityPullRequestBinding.inflate(layoutInflater)
 
     private val viewModel by viewModels<PullRequestViewModel>()
+    private val pullRequestAdapter by lazy { PullRequestAdapter() }
 
     override fun setupView() {
+        setupRecyclerView()
         observeClosePullRequests()
         viewModel.fetchClosedPullRequests(DEFAULT_ORG_NAME, DEFAULT_REPO_NAME)
+    }
+
+    private fun setupRecyclerView() {
+        binding.rvPullRequests.apply {
+            layoutManager = LinearLayoutManager(this@PullRequestActivity)
+            adapter = pullRequestAdapter
+        }
     }
 
     private fun observeClosePullRequests() {
@@ -50,5 +60,6 @@ class PullRequestActivity : BaseActivity<ActivityPullRequestBinding>() {
 
     private fun displayPullRequests(pullRequests: List<PullRequestModels.PullRequestEntity>) {
         hideLoader()
+        pullRequestAdapter.submitList(pullRequests)
     }
 }
