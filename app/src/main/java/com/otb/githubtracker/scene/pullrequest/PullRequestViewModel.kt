@@ -30,6 +30,7 @@ class PullRequestViewModel @Inject constructor(private val repository: PullReque
         organizationName: String,
         repositoryName: String
     ) {
+        _pullRequestLiveData.value = ViewState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             when (val result =
                 repository.fetchClosedPullRequests(
