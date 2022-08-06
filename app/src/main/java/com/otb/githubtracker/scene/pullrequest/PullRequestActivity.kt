@@ -1,8 +1,8 @@
 package com.otb.githubtracker.scene.pullrequest
 
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otb.githubtracker.common.BaseActivity
 import com.otb.githubtracker.databinding.ActivityPullRequestBinding
@@ -29,37 +29,26 @@ class PullRequestActivity : BaseActivity<ActivityPullRequestBinding>() {
     }
 
     private fun setupRecyclerView() {
+        val verticalLayoutManager = LinearLayoutManager(this@PullRequestActivity)
         binding.rvPullRequests.apply {
-            layoutManager = LinearLayoutManager(this@PullRequestActivity)
+            layoutManager = verticalLayoutManager
             adapter = pullRequestAdapter
+            addItemDecoration(DividerItemDecoration(baseContext, verticalLayoutManager.orientation))
         }
     }
 
     private fun observeClosePullRequests() {
         viewModel.pullRequestLiveData.observe(this) {
             when (it) {
-                is ViewState.Loading -> displayLoader()
-                is ViewState.Success -> displayPullRequests(it.data)
-                is ViewState.Error -> displayError(it.errorMessage)
+                is ViewState.Loading -> showLoadingSpinner()
+                is ViewState.Success -> showPullRequests(it.data)
+                is ViewState.Error -> showErrorMessage(it.errorMessage)
             }
         }
     }
 
-    private fun displayLoader() {
-
-    }
-
-    private fun hideLoader() {
-
-    }
-
-    private fun displayError(errorMessage: String) {
-        hideLoader()
-        Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_LONG).show()
-    }
-
-    private fun displayPullRequests(pullRequests: List<PullRequestModels.PullRequestEntity>) {
-        hideLoader()
+    private fun showPullRequests(pullRequests: List<PullRequestModels.PullRequestEntity>) {
+        dismissLoadingSpinner()
         pullRequestAdapter.submitList(pullRequests)
     }
 }

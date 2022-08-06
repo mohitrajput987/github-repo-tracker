@@ -2,8 +2,11 @@ package com.otb.githubtracker.common
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.otb.githubtracker.common.base.DisplaysErrorMessage
+import com.otb.githubtracker.common.base.DisplaysLoadingSpinner
 
 /**
  * Created by Mohit Rajput on 06/08/22.
@@ -11,10 +14,12 @@ import androidx.viewbinding.ViewBinding
  * binding.
  * Child activity need to implement inflateLayout() with specific binding.
  */
-abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), DisplaysLoadingSpinner,
+    DisplaysErrorMessage {
 
     private var _binding: ViewBinding? = null
-    abstract fun inflateLayout(layoutInflater: LayoutInflater) : VB
+    abstract fun inflateLayout(layoutInflater: LayoutInflater): VB
+    override lateinit var loadingSpinner: LoadingSpinner
 
     @Suppress("UNCHECKED_CAST")
     protected val binding: VB
@@ -24,6 +29,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = inflateLayout(layoutInflater)
         setContentView(requireNotNull(_binding).root)
+        loadingSpinner = LoadingSpinner(this)
         setupView()
     }
 
@@ -32,5 +38,10 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun showErrorMessage(errorMessage: String) {
+        dismissLoadingSpinner()
+        Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_LONG).show()
     }
 }
