@@ -1,4 +1,5 @@
 <resources>
     <string name="created_at_x">created at %s</string>
     <string name="closed_at_x">Closed at %s</string>
+    <string name="closed_pull_requests">Closed pull requests</string>
 </resources>
