@@ -16,6 +16,6 @@ interface GitHubApiService {
         @Path("repo_name") repositoryName: String,
         @Query("state") state: String,
         @Query("page") page: Int,
-        @Query("per_page") perPage: Int = 20
+        @Query("per_page") perPage: Int = 30
     ): Response<List<PullRequestModels.PullRequestResponse>>
 }
