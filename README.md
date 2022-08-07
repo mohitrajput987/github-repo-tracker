@@ -21,3 +21,11 @@ companion object {
 - Kotlin coroutines
 - Hilt
 - Coroutine unit tests
+
+## Package structure
+This project is implemented using [package by feature](https://proandroiddev.com/package-by-type-by-layer-by-feature-vs-package-by-layered-feature-e59921a4dffa).
+
+## To Dos
+The project doesn't contain pagination as of now. We can use paging library for that as I used in below two projects:
+- https://github.com/mohitrajput987/github-issues
+- https://github.com/mohitrajput987/photo-search
