@@ -6,7 +6,7 @@ import com.otb.githubtracker.common.LoadingSpinner
  * Created by Mohit Rajput on 06/08/22.
  */
 interface DisplaysLoadingSpinner {
-    var loadingSpinner: LoadingSpinner
+    val loadingSpinner: LoadingSpinner
 
     fun showLoadingSpinner() {
         loadingSpinner.show()

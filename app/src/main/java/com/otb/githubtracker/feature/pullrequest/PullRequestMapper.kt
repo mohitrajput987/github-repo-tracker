@@ -1,6 +1,6 @@
 package com.otb.githubtracker.feature.pullrequest
 
-import com.otb.githubtracker.common.Mapper
+import com.otb.githubtracker.common.base.Mapper
 import com.otb.githubtracker.util.DateUtils
 import java.text.SimpleDateFormat
 import java.util.*
