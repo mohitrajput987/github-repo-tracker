@@ -1,6 +1,7 @@
-package com.otb.githubtracker.scene.pullrequest
+package com.otb.githubtracker.feature.pullrequest
 
 import com.otb.githubtracker.common.Mapper
+import com.otb.githubtracker.util.DateUtils
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -15,8 +16,8 @@ class PullRequestMapper :
             PullRequestModels.PullRequestEntity(
                 id = it.id,
                 title = it.title,
-                createdAt = getFormattedDate(it.createdAt),
-                closedAt = it.closedAt?.let { closedAt -> getFormattedDate(closedAt) } ?: "",
+                createdAt = DateUtils.getFormattedTime(it.createdAt),
+                closedAt = it.closedAt?.let { closedAt -> DateUtils.getFormattedTime(closedAt) } ?: "",
                 user = user
             )
         }

@@ -1,4 +1,4 @@
-package com.otb.githubtracker.scene.pullrequest
+package com.otb.githubtracker.feature.pullrequest
 
 import com.otb.githubtracker.network.ApiResult
 import com.otb.githubtracker.network.getResult
